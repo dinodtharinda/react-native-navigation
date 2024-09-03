@@ -1,14 +1,12 @@
 import { useLayoutEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import DrawerIcon from "../components/DrawerIcon";
+import {Ionicons} from '@expo/vector-icons'
 
 function WelcomeScreen({ navigation }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "Welcome",
-      drawerIcon: ({ color, size }) => (
-        <DrawerIcon icon="home" size={size} color={color} />
-      ),
+      tabBarIcon:({color,size})=><Ionicons name="home" color={color} size={size}/>
     });
   }, [navigation]);
 

@@ -1,27 +1,26 @@
 import { Button, Platform, StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import UserScreen from "./screens/UserScreen";
-import {Ionicons} from '@expo/vector-icons'
-const Drawer = createDrawerNavigator();
 
+const Drawer = createDrawerNavigator();
+const BottomTab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
+      <BottomTab.Navigator
         initialRouteName="WelcomeScreen"
         screenOptions={{
-          headerStyle: { backgroundColor: "#9145D7" },
+          tabBarActiveTintColor: "#7527BE",
+          headerStyle: { backgroundColor: "#7527BE" },
           headerTintColor: "white",
-          drawerActiveBackgroundColor:"#D4A7FF" ,
-          drawerActiveTintColor: "#3c0a6b",
-          // drawerStyle:{backgroundColor:"#7C35BE"},
         }}
       >
-        <Drawer.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <Drawer.Screen name="UserScreen" component={UserScreen} />
-      </Drawer.Navigator>
+        <BottomTab.Screen name="WelcomeScreen" component={WelcomeScreen} />
+        <BottomTab.Screen name="UserScreen" component={UserScreen} />
+      </BottomTab.Navigator>
     </NavigationContainer>
   );
 }

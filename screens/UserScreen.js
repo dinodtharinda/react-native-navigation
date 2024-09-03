@@ -10,9 +10,7 @@ function UserScreen({ navigation, route }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "User Home",
-      drawerIcon: ({ color, size }) => (
-        <DrawerIcon icon="person" size={size} color={color} />
-      ),
+        tabBarIcon:({color,size})=><Ionicons name="person" color={color} size={size}/>
     });
   }, [navigation]);
   return (
