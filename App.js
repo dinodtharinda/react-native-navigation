@@ -1,48 +1,28 @@
-import { StatusBar } from "expo-status-bar";
 import { Button, Platform, StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-  createNativeStackNavigator,
-  createStackNavigator,
-} from "@react-navigation/native-stack";
-
-import CategoriesScreen from "./screens/CategoriesScreen";
-import MealsOverviewScreen from "./screens/MealsOverviewScreen";
-import MealDetailScreen from "./screens/MealDetailScreen";
-
-const Stack =
-  Platform.OS === "web" ? createStackNavigator() : createNativeStackNavigator();
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import WelcomeScreen from "./screens/WelcomeScreen";
+import UserScreen from "./screens/UserScreen";
+import {Ionicons} from '@expo/vector-icons'
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <>
-      <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="MealsCategories"
-          screenOptions={{
-            headerStyle: { backgroundColor: "#351401" },
-            headerTintColor: "white",
-            contentStyle: { backgroundColor: "#3f2f25" },
-          }}
-        >
-          <Stack.Screen
-            name="MealsCategories"
-            component={CategoriesScreen}
-            options={{ title: "All Categories" }}
-          />
-          <Stack.Screen
-            name="MealsOverview"
-            component={MealsOverviewScreen}
-            // options={({ route, navigation }) => {
-            //   const catId = route.params.categoryId;
-            //   return { title: catId };
-            // }}
-          />
-          <Stack.Screen name="MealDetail" component={MealDetailScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <Drawer.Navigator
+        initialRouteName="WelcomeScreen"
+        screenOptions={{
+          headerStyle: { backgroundColor: "#9145D7" },
+          headerTintColor: "white",
+          drawerActiveBackgroundColor:"#D4A7FF" ,
+          drawerActiveTintColor: "#3c0a6b",
+          // drawerStyle:{backgroundColor:"#7C35BE"},
+        }}
+      >
+        <Drawer.Screen name="WelcomeScreen" component={WelcomeScreen} />
+        <Drawer.Screen name="UserScreen" component={UserScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
